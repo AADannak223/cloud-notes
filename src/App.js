@@ -5,6 +5,9 @@ import { About } from "./components/About";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NoteState from "./context/notes/NoteState";
 import { Alert } from "./components/Alert";
+import Login from "./components/Login";
+import Signup from "./components/Signup";
+
 
 function App() {
   return (
@@ -17,6 +20,12 @@ function App() {
             <Switch>
               <Route exact path="/">
                 <Home />
+              </Route>
+              <Route exact path="/login">
+                <Login />
+              </Route>
+              <Route exact path="/signup">
+                <Signup />
               </Route>
 
               <Route exact path="/about">
