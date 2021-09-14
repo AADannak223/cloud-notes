@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router';
 
-const Signup = () => {
+const Signup = (props) => {
     const history = useHistory();
     const [credentials, setCredentials] = useState({ name: "", email: "", password: "", cPassword: "" })
 
@@ -25,14 +25,16 @@ const Signup = () => {
         if (json.success) {
             localStorage.setItem("tokan", json.authtoken)
             history.push("/");
+            props.showAlert("Account created successfully", "success");
         }
         else {
-            alert("try again");
+            props.showAlert("Invalid details", "danger");
         }
     }
     return (
 
-        <div>
+        <div className="container mt-3">
+            <h2 className="my-3">Create an Account to use Cloudnotes</h2>
             <form onSubmit={handleSubmit}>
                 <div className="mb-3">
                     <label htmlFor="name" className="form-label">Name</label>
